@@ -14,18 +14,16 @@ public class InitialValidationHandler : IValidationHandler
 
     public void Handle(ValidationContext context)
     {   
-        Console.WriteLine("Initial validation started");
-        
         if (context is null)
             throw new ArgumentNullException(nameof(context), "Context is null");
         
         if (context.Data is null)
             throw new ArgumentException("Data is null");
         
-        Console.WriteLine("Initial validation passed");
+        Console.WriteLine("1 - Initial validation passed");
 
         _nextHandler?.Handle(context);
         
-        Console.WriteLine("Initial validation finished");
+        Console.WriteLine("1 - Initial validation finished");
     }
 }

@@ -14,6 +14,14 @@ public class DataEnrichmentHandler : IValidationHandler
 
     public void Handle(ValidationContext context)
     {
+        if (context.ValidationCode is not null)
+            throw new ArgumentException("Validation code is already set, context is not valid");
+        
+        context.ValidationCode = Guid.NewGuid().ToString();
+        Console.WriteLine("4 - Data enrichment passed");
+
         _nextHandler?.Handle(context);
+        
+        Console.WriteLine("4 - Data enrichment finished");
     }
 }

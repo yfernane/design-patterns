@@ -14,6 +14,13 @@ public class BusinessValidationHandler : IValidationHandler
 
     public void Handle(ValidationContext context)
     {
+        if (!context.IsValid)
+            throw new ArgumentException("Business validation failed, context is not valid");
+        
+        Console.WriteLine("3 - Business validation passed");
+
         _nextHandler?.Handle(context);
+        
+        Console.WriteLine("3 - Business validation finished");
     }
 }
