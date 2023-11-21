@@ -2,9 +2,8 @@ using ChainOfResponsibility.Models;
 
 namespace ChainOfResponsibility.Handlers;
 
-public class InitialValidationHandler : BaseValidationHandler
+public class InitialValidationHandler : BaseHandler
 {
-    
     public override void Handle(ValidationContext context)
     {   
         if (context is null)

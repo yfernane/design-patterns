@@ -2,7 +2,7 @@ using ChainOfResponsibility.Models;
 
 namespace ChainOfResponsibility.Handlers;
 
-public class BusinessValidationHandler : BaseValidationHandler
+public class BusinessValidationHandler : BaseHandler
 {
     public override void Handle(ValidationContext context)
     {

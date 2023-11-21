@@ -2,8 +2,8 @@ using ChainOfResponsibility.Models;
 
 namespace ChainOfResponsibility.Interfaces;
 
-public interface IValidationHandler
+public interface IHandler
 {
-    IValidationHandler SetNext(IValidationHandler nextHandler);
+    IHandler SetNext(IHandler nextHandler);
     void Handle(ValidationContext context);
 }

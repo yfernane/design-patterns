@@ -3,11 +3,11 @@ using ChainOfResponsibility.Models;
 
 namespace ChainOfResponsibility.Handlers;
 
-public abstract class BaseValidationHandler : IValidationHandler
+public abstract class BaseHandler : IHandler
 {
-    protected IValidationHandler? NextHandler;
+    protected IHandler? NextHandler;
 
-    public IValidationHandler SetNext(IValidationHandler nextHandler)
+    public IHandler SetNext(IHandler nextHandler)
     {
         NextHandler = nextHandler;
 
