@@ -7,9 +7,10 @@ var businessValidator = new BusinessValidationHandler();
 var enricher = new DataEnrichmentHandler();
 
 // This determine the execution order of our handlers
-initialValidator.SetNext(securityValidator);
-securityValidator.SetNext(businessValidator);
-businessValidator.SetNext(enricher);
+initialValidator
+    .SetNext(securityValidator)
+    .SetNext(businessValidator)
+    .SetNext(enricher);
 
 // This is the data we want to validate
 var data = new ValidationContext("Some data", IsValid: true);

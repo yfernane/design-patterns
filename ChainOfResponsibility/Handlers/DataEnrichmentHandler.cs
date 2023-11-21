@@ -1,18 +1,10 @@
-using ChainOfResponsibility.Interfaces;
 using ChainOfResponsibility.Models;
 
 namespace ChainOfResponsibility.Handlers;
 
-public class DataEnrichmentHandler : IValidationHandler
+public class DataEnrichmentHandler : BaseValidationHandler
 {
-    private IValidationHandler? _nextHandler;
-    
-    public void SetNext(IValidationHandler? nextHandler)
-    {
-        _nextHandler = nextHandler;
-    }
-
-    public void Handle(ValidationContext context)
+    public override void Handle(ValidationContext context)
     {
         if (context.ValidationCode is not null)
             throw new ArgumentException("Validation code is already set, context is not valid");
@@ -20,7 +12,7 @@ public class DataEnrichmentHandler : IValidationHandler
         context.ValidationCode = Guid.NewGuid().ToString();
         Console.WriteLine("4 - Data enrichment passed");
 
-        _nextHandler?.Handle(context);
+        NextHandler?.Handle(context);
         
         Console.WriteLine("4 - Data enrichment finished");
     }

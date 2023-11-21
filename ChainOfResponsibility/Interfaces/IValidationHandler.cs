@@ -4,6 +4,6 @@ namespace ChainOfResponsibility.Interfaces;
 
 public interface IValidationHandler
 {
-    void SetNext(IValidationHandler? nextHandler);
+    IValidationHandler SetNext(IValidationHandler nextHandler);
     void Handle(ValidationContext context);
 }
