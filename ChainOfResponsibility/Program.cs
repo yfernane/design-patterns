@@ -13,7 +13,19 @@ initialValidator
     .SetNext(enricher);
 
 // This is the data we want to validate
-var data = new ValidationContext("Some data", IsValid: true);
+var validData = new ValidationContext("Some data", IsValid: true);
+var invalidData = new ValidationContext("Some data", IsValid: false);
 
 // This will execute the chain of handlers
-initialValidator.Handle(data);
+try
+{
+    Console.WriteLine("Process valid data");
+    initialValidator.Handle(validData);
+    
+    Console.WriteLine("Process invalid data");
+    initialValidator.Handle(invalidData);
+}
+catch(Exception e)
+{
+    Console.WriteLine(e.Message);
+}
