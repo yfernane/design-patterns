@@ -1,7 +1,7 @@
-using ChainOfResponsibility.Interfaces;
-using ChainOfResponsibility.Models;
+using ChainOfResponsibility.V1.Interfaces;
+using ChainOfResponsibility.V1.Models;
 
-namespace ChainOfResponsibility.Handlers;
+namespace ChainOfResponsibility.V1.Handlers;
 
 public abstract class BaseHandler : IHandler
 {

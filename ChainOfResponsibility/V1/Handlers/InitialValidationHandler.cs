@@ -1,6 +1,6 @@
-using ChainOfResponsibility.Models;
+using ChainOfResponsibility.V1.Models;
 
-namespace ChainOfResponsibility.Handlers;
+namespace ChainOfResponsibility.V1.Handlers;
 
 public class InitialValidationHandler : BaseHandler
 {

@@ -1,6 +1,6 @@
-using ChainOfResponsibility.Models;
+using ChainOfResponsibility.V1.Models;
 
-namespace ChainOfResponsibility.Interfaces;
+namespace ChainOfResponsibility.V1.Interfaces;
 
 public interface IHandler
 {

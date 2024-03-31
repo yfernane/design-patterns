@@ -1,5 +1,5 @@
-﻿using ChainOfResponsibility.Handlers;
-using ChainOfResponsibility.Models;
+﻿using ChainOfResponsibility.V1.Handlers;
+using ChainOfResponsibility.V1.Models;
 
 var initialValidator = new InitialValidationHandler();
 var securityValidator = new SecurityValidationHandler();
