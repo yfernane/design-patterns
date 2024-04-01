@@ -9,5 +9,4 @@ public interface IRepository<TModel, in TCriteria>
 }
 
 public interface ISearchCriteria
-{
-}
+{ }

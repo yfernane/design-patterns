@@ -1,11 +1,11 @@
-using ChainOfResponsibility.V2.ValidateOrder.Contracts;
+using ChainOfResponsibility.V2.ValidateOrder.Context;
 
 namespace ChainOfResponsibility.V2.ValidateOrder.Steps;
 
 internal sealed class ValidateOrderStep : IValidateOrderStep
 {
     public ValidateOrderSteps Step => ValidateOrderSteps.ValidateOrder;
- 
+
     public Task ExecuteAsync(IValidateOrderContext context, CancellationToken cancellationToken)
     {
         if(context.Item is not { Status: OrderStatus.Pending })
@@ -15,6 +15,7 @@ internal sealed class ValidateOrderStep : IValidateOrderStep
         }
 
         Console.WriteLine("ValidateOrderStep executed successfully");
+
         return Task.CompletedTask;
     }
 }

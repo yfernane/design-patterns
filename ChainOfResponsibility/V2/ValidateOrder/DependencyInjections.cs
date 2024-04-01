@@ -6,27 +6,27 @@ namespace ChainOfResponsibility.V2.ValidateOrder;
 
 internal static class DependencyInjections
 {
-	public static IServiceCollection AddValidateOrder(this IServiceCollection services)
-	{
-		return services
-	       .AddRepositories()
-	       .AddReleaseOrderItemSteps();
-	}
-	
-	private static IServiceCollection AddRepositories(this IServiceCollection services)
-	{
-		return services.AddScoped<IOrderRepository, OrderRepository>();
-	}
-	
-	private static IServiceCollection AddReleaseOrderItemSteps(this IServiceCollection services)
-	{
-		// Add steps
-		services.AddTransient<LoadOrderStep>();
-		services.AddTransient<ValidateOrderStep>();
-		services.AddTransient<ValidateProductStep>();
-		services.AddTransient<CompleteOrderStep>();
+    public static IServiceCollection AddValidateOrder(this IServiceCollection services)
+    {
+        return services
+               .AddRepositories()
+               .AddReleaseOrderItemSteps();
+    }
 
-		// Add pipeline
-		return services.AddSingleton<ValidateOrderPipeline>();
-	}
+    private static IServiceCollection AddRepositories(this IServiceCollection services)
+    {
+        return services.AddScoped<IOrderRepository, OrderRepository>();
+    }
+
+    private static IServiceCollection AddReleaseOrderItemSteps(this IServiceCollection services)
+    {
+        // Add steps
+        services.AddTransient<LoadOrderStep>();
+        services.AddTransient<ValidateOrderStep>();
+        services.AddTransient<ValidateProductStep>();
+        services.AddTransient<CompleteOrderStep>();
+
+        // Add pipeline
+        return services.AddSingleton<ValidateOrderPipeline>();
+    }
 }

@@ -11,11 +11,11 @@ internal class Sample
     {
         _pipeline = pipeline;
     }
-    
+
     public async Task Run(CancellationToken cancellationToken = default)
     {
         var context = new ValidateOrderContext(Guid.NewGuid());
-        
+
         await _pipeline.ExecuteAsync(context, cancellationToken);
     }
 }

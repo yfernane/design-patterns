@@ -1,4 +1,4 @@
-using ChainOfResponsibility.V2.ValidateOrder.Contracts;
+using ChainOfResponsibility.V2.ValidateOrder.Context;
 using ChainOfResponsibility.V2.ValidateOrder.Data;
 
 namespace ChainOfResponsibility.V2.ValidateOrder.Steps;
@@ -14,7 +14,7 @@ internal sealed class LoadOrderStep : IConditionalValidateOrderStep
 
     public ValidateOrderSteps Step => ValidateOrderSteps.LoadOrder;
     public ValidateOrderSteps SkipToStep => ValidateOrderSteps.CompleteOrder;
-    
+
     public async Task ExecuteAsync(IValidateOrderContext context, CancellationToken cancellationToken)
     {
         var order = await _repository.GetByIdAsync(context.Id, cancellationToken);
@@ -25,7 +25,7 @@ internal sealed class LoadOrderStep : IConditionalValidateOrderStep
 
             return;
         }
-        
+
         context.Item = order;
         Console.WriteLine("LoadOrderStep executed successfully");
     }

@@ -1,4 +1,4 @@
-namespace ChainOfResponsibility.V2.ValidateOrder.Contracts;
+namespace ChainOfResponsibility.V2.ValidateOrder.Context;
 
 public enum ValidateOrderSteps
 {

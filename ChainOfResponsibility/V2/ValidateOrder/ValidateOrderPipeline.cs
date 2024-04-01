@@ -1,7 +1,11 @@
-using ChainOfResponsibility.V2.ValidateOrder.Contracts;
+using ChainOfResponsibility.V2.Abstractions;
+using ChainOfResponsibility.V2.ValidateOrder.Context;
 using ChainOfResponsibility.V2.ValidateOrder.Steps;
 
 namespace ChainOfResponsibility.V2.ValidateOrder;
+
+public abstract class ValidateOrderPipelineBase : Pipeline<IValidateOrderStep, IValidateOrderContext, Guid, Order>
+{ }
 
 internal sealed class ValidateOrderPipeline : ValidateOrderPipelineBase
 {
@@ -17,5 +21,5 @@ internal sealed class ValidateOrderPipeline : ValidateOrderPipelineBase
             .AddStep(completeOrderStep);
     }
 
-    public List<IValidateOrderStep> Steps => new ();
+    public List<IValidateOrderStep> Steps => new();
 }
