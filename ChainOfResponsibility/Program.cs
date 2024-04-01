@@ -1,30 +1,16 @@
-﻿using ChainOfResponsibility.V1.Handlers;
-using ChainOfResponsibility.V1.Models;
+﻿using ChainOfResponsibility.V2.ValidateOrder;
+using Microsoft.Extensions.DependencyInjection;
 
 // V1
-var chainOfResponsibilitySample = new ChainOfResponsibility.V1.Sample();
-chainOfResponsibilitySample.Run();
+// var chainOfResponsibilitySample = new ChainOfResponsibility.V1.Sample();
+// chainOfResponsibilitySample.Run();
 
-// This determine the execution order of our handlers
-initialValidator
-    .SetNext(securityValidator)
-    .SetNext(businessValidator)
-    .SetNext(enricher);
+// V2
+var serviceCollection = new ServiceCollection();
+serviceCollection.AddValidateOrder();
 
-// This is the data we want to validate
-var validData = new ValidationContext("Some data", IsValid: true);
-var invalidData = new ValidationContext("Some data", IsValid: false);
+var pipeline = serviceCollection.BuildServiceProvider().GetRequiredService<ValidateOrderPipeline>()
+    ?? throw new InvalidOperationException("Cannot resolve service.");
 
-// This will execute the chain of handlers
-try
-{
-    Console.WriteLine("Process valid data");
-    initialValidator.Handle(validData);
-    
-    Console.WriteLine("Process invalid data");
-    initialValidator.Handle(invalidData);
-}
-catch(Exception e)
-{
-    Console.WriteLine(e.Message);
-}
+var sample = new ChainOfResponsibility.V2.Sample(pipeline);
+await sample.Run(CancellationToken.None);
