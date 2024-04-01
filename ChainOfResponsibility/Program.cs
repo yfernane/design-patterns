@@ -1,10 +1,9 @@
 ﻿using ChainOfResponsibility.V1.Handlers;
 using ChainOfResponsibility.V1.Models;
 
-var initialValidator = new InitialValidationHandler();
-var securityValidator = new SecurityValidationHandler();
-var businessValidator = new BusinessValidationHandler();
-var enricher = new DataEnrichmentHandler();
+// V1
+var chainOfResponsibilitySample = new ChainOfResponsibility.V1.Sample();
+chainOfResponsibilitySample.Run();
 
 // This determine the execution order of our handlers
 initialValidator
